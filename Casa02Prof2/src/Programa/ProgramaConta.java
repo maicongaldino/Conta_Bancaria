@@ -11,8 +11,6 @@ public class ProgramaConta {
         Conta conta = new Conta();
         Cliente cliente = new Cliente("Maicola", conta);
 
-        //kk
-
         int i=-1;
         
         while (i != 0) 
