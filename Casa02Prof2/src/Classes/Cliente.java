@@ -4,7 +4,15 @@ public class Cliente {
 
     private String nome;
     private String cpf;
-    private Conta conta;
+    private Conta contaAtual;
+
+    public Cliente (Conta contaAtual) {
+        this.contaAtual = contaAtual;
+    }
+    public Cliente(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+    }
 
     //#region Get and Set
     public String getNome() {
@@ -19,28 +27,23 @@ public class Cliente {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    public Conta getConta() {
-        return conta;
+    public Conta getContaAtual() {
+        return contaAtual;
     }
-    public void setConta(Conta conta) {
-        this.conta = conta;
+    public void setContaAtual(Conta contaAtual) {
+        this.contaAtual = contaAtual;
     }
     //#endregion
 
-    public Cliente(String nome, Conta conta) {
-        this.nome = nome;
-        this.conta = conta;
-    }
-
     public void depositar(double valor) {
-        this.conta.realizaOperacao(TipoOperacao.DEPOSITO, valor);
+        this.contaAtual.realizaOperacao(TipoOperacao.DEPOSITO, valor);
     }
 
     public void sacar(double valor) {
-        this.conta.realizaOperacao(TipoOperacao.SAQUE, valor);
+        this.contaAtual.realizaOperacao(TipoOperacao.SAQUE, valor);
     }
 
     public void exibirSaldo() {
-        this.conta.realizaOperacao(TipoOperacao.SALDO, 0);
+        this.contaAtual.realizaOperacao(TipoOperacao.SALDO, 0);
     }
 }

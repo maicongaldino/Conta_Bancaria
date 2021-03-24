@@ -4,6 +4,8 @@ public class Conta {
     private TipoOperacao operacao;
     private double valorOperacao;
     private double saldo;
+    private int idConta;
+    private Cliente cliente;
 
     //#region Get and set
     public TipoOperacao getOperacao() {
@@ -15,7 +17,28 @@ public class Conta {
     public double getSaldo() {
         return saldo;
     }
+    public int getIdConta() {
+        return idConta;
+    }
+    public void setIdConta(int idConta) {
+        this.idConta = idConta;
+    }
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     //#endregion
+
+    public Conta(Cliente cliente) {
+        this.cliente = cliente;
+        cliente.setContaAtual(this);
+    }
+    public Conta(int idConta, Cliente cliente) {
+        this(cliente);
+        setIdConta(idConta);
+    }
 
     public void realizaOperacao(TipoOperacao operacao, double valor) {
         this.operacao = operacao;

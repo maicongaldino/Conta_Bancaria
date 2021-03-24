@@ -8,8 +8,8 @@ public class ProgramaConta {
     public static void main(String[] args) {
 
         Scanner ler = new Scanner(System.in);
-        Conta conta = new Conta();
-        Cliente cliente = new Cliente("Maicola", conta);
+        Cliente cliente = new Cliente("Maicola", "12345678910");
+        Conta conta = new Conta(1, cliente);
 
         int i=-1;
         
@@ -24,13 +24,13 @@ public class ProgramaConta {
                     System.out.println("\nEncerrando...");
                     return;
                 case 1:
-                    exibirSaldo(cliente);
+                    exibirSaldo(conta);
                     break;
                 case 2:
-                    depositar(ler, cliente);
+                    depositar(ler, conta);
                     break;
                 case 3:
-                    sacar(ler, cliente);
+                    sacar(ler, conta);
                     break;
                 default:
                     System.out.println("Operação inválida, Verifique.");
@@ -40,22 +40,22 @@ public class ProgramaConta {
         ler.close();
     }
 
-    private static void sacar(Scanner ler, Cliente cliente) {
+    private static void sacar(Scanner ler, Conta conta) {
         double valor;
         System.out.println("\nDigite o valor que deseja sacar: ");
         valor = ler.nextDouble();
-        cliente.sacar(valor);
+        conta.getCliente().sacar(valor);
     }
 
-    private static void depositar(Scanner ler, Cliente cliente) {
+    private static void depositar(Scanner ler, Conta conta) {
         double valor;
         System.out.println("\nDigite o valor que deseja depositar: ");
         valor = ler.nextDouble();
-        cliente.depositar(valor);
+        conta.getCliente().depositar(valor);
     }
 
-    private static void exibirSaldo(Cliente cliente) {
-        cliente.exibirSaldo();
+    private static void exibirSaldo(Conta conta) {
+        conta.getCliente().exibirSaldo();
     }
 
     private static void exibeMenu() {
